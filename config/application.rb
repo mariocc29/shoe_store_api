@@ -56,5 +56,11 @@ module ShoeStoreApi
 
     # Sets Sidekiq as the queue adapter for Active Job, enabling background job processing with Sidekiq.
     config.active_job.queue_adapter = :sidekiq
+
+    # Disables request forgery protection for Action Cable, allowing connections from any origin.
+    config.action_cable.disable_request_forgery_protection = true
+
+    # Allows WebSocket connections from any origin.
+    config.action_cable.allowed_request_origins = [ '*' ]
   end
 end

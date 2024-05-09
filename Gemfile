@@ -33,11 +33,12 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
-# gem "rack-cors"
+gem "rack-cors"
 
+# Customization gems for the project
 gem 'dotenv-rails' # Loads environment variables from a .env file into ENV when the Rails app initializes.
 gem 'sidekiq' # Background processing for Ruby.
-gem 'websocket-client-simple'
+gem 'websocket-client-simple' # Simple WebSocket Client for Ruby
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

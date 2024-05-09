@@ -1,7 +1,7 @@
 class WebSocketJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
-    # Do something later
+  def perform(sale)
+    ActionCable.server.broadcast('SalesChannel', sale)
   end
 end
