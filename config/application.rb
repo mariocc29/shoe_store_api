@@ -40,5 +40,21 @@ module ShoeStoreApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # Configuration for code generators.
+    config.generators do |g|
+      g.template_engine nil
+      g.test_framework :rspec, fixture: false
+      g.stylesheets false
+      g.javascripts false
+      g.helper false
+      g.api true
+    end
+
+    # Configures Redis as the cache store using the Redis URL specified in the environment variables.
+    config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
+
+    # Sets Sidekiq as the queue adapter for Active Job, enabling background job processing with Sidekiq.
+    config.active_job.queue_adapter = :sidekiq
   end
 end
