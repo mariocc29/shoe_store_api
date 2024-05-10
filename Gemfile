@@ -39,6 +39,7 @@ gem "rack-cors"
 gem 'dotenv-rails' # Loads environment variables from a .env file into ENV when the Rails app initializes.
 gem 'sidekiq' # Background processing for Ruby.
 gem 'websocket-client-simple' # Simple WebSocket Client for Ruby
+gem 'bunny' # Bunny is a RabbitMQ client that focuses on ease of use
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
