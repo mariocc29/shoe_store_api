@@ -22,11 +22,10 @@ RSpec.describe V1::WebhookApi, type: :request do
       let(:message) { {store: store, model: model, status: 'test-status'} }
       
       it 'notifies an anomaly', :aggregate_failures do
-        expect(ActionCable.server).to have_received(:broadcast).with('NotificationChannel', { type: NotificationCategory::ANOMALY, data: message })
-
         response = subject
         data = JSON.parse(response.body)
         expect(response.status).to eq(HttpStatus::OK)
+        expect(ActionCable.server).to have_received(:broadcast).with('NotificationChannel', { type: NotificationCategory::ANOMALY, data: message })
       end
     end
   end
