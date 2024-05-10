@@ -36,10 +36,14 @@ gem "bootsnap", require: false
 gem "rack-cors"
 
 # Customization gems for the project
+gem 'bunny' # Bunny is a RabbitMQ client that focuses on ease of use
 gem 'dotenv-rails' # Loads environment variables from a .env file into ENV when the Rails app initializes.
+gem 'grape' # REST-like API framework for Ruby
+gem 'grape-entity' # Entity serialization for Grape APIs
+gem 'grape-swagger' # Adds swagger compliant documentation to your Grape API
+gem 'grape-swagger-entity' # Swagger documentation for Grape entities
 gem 'sidekiq' # Background processing for Ruby.
 gem 'websocket-client-simple' # Simple WebSocket Client for Ruby
-gem 'bunny' # Bunny is a RabbitMQ client that focuses on ease of use
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
