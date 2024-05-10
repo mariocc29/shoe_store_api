@@ -1,0 +1,3 @@
+[submodule "websocket"]
+	path = websocket
+	url = git@github.com:mathieugagne/shoe-store.git
