@@ -8,6 +8,7 @@ class Api < Grape::API
 
   mount V1::StoreApi
   mount V1::ModelApi
+  mount V1::WebhookApi
 
   # Endpoint for health check, used to verify the API's operational status.
   # Returns a JSON response with a 'health' key set to 'ok' if the API is functioning properly.
