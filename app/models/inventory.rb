@@ -1,5 +1,5 @@
 class Inventory < ApplicationRecord
-  validates :inventory, presence: true
+  validates :stock, presence: true
 
   belongs_to :store
   belongs_to :model
