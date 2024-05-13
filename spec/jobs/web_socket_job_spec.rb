@@ -12,11 +12,15 @@ RSpec.describe WebSocketJob, type: :job do
 
     before :each do
       allow(ActionCable.server).to receive(:broadcast)
+      allow(Stores::Handler).to receive(:transmit)
+      allow(Models::Handler).to receive(:transmit)
     end
 
     it "creates a new inventory and broadcasts a notification" do
       WebSocketJob.perform_now(JSON.parse(message.to_json()))
-      expect(ActionCable.server).to have_received(:broadcast).with('NotificationChannel', { type: NotificationCategory::TRANSACTION, data: an_instance_of(Inventory) })
+      inventory = Inventory.last
+      expected_data = inventory.attributes.merge(store: inventory.store, model: inventory.model)
+      expect(ActionCable.server).to have_received(:broadcast).with('NotificationChannel', { type: NotificationCategory::INVENTORY, data: expected_data })
     end
 
     it "creates a new inventory with correct attributes" do
