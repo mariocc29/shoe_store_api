@@ -6,6 +6,7 @@ class NotificationChannel < ApplicationCable::Channel
   def subscribed
     stream_from 'NotificationChannel'
     Stores::Handler.transmit
+    Models::Handler.transmit
   end
 
   def unsubscribed; end

@@ -4,6 +4,6 @@
 module NotificationCategory
   STORE = :store
   MODEL = :model
-  TRANSACTION = :transaction
+  INVENTORY = :inventory
   ANOMALY = :anomaly
 end

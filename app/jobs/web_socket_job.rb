@@ -7,7 +7,7 @@ class WebSocketJob < ApplicationJob
   def perform(message)
     inventory = persists(message)
     build(inventory) do | data |
-      ActionCable.server.broadcast('NotificationChannel', { type: NotificationCategory::TRANSACTION, data: })
+      ActionCable.server.broadcast('NotificationChannel', { type: NotificationCategory::INVENTORY, data: })
     end
   rescue StandardError => e
     Rails.logger.error "WebSocketJob error: #{e.message}"
