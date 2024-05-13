@@ -12,6 +12,7 @@ class WebSocketJob < ApplicationJob
 
     begin
       inventory.save
+      inventory.includes(:store, :model)
       ActionCable.server.broadcast('NotificationChannel', { type: NotificationCategory::TRANSACTION, data: inventory })
     rescue StandardError => e
       Rails.logger.error "WebSocketJob error: #{e.message}"
