@@ -3,7 +3,8 @@ module Models
     def self.transmit
       process = Models::Process.new
       data = process.build
-      ActionCable.server.broadcast('NotificationChannel', { type: NotificationCategory::MODEL, data: })
+      message = { type: NotificationCategory::STAT_MODEL, data: }
+      ActionCable.server.broadcast('NotificationChannel', message)
     end
   end
 end
