@@ -7,7 +7,7 @@ class Inventory < ApplicationRecord
   after_create :send_to_sqs
   
   scope :latest_stock, -> do
-    subquery = Inventory.group(:store_id, :model_id, :stock).select("store_id, model_id, MAX(created_at) as max_created_at")
+    subquery = Inventory.group(:store_id, :model_id).select("store_id, model_id, MAX(created_at) as max_created_at")
     where("(inventories.store_id, inventories.model_id, inventories.created_at) IN (?)", subquery)
   end
   

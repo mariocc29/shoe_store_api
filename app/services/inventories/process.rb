@@ -18,8 +18,7 @@ module Inventories
     def get_current_inventory_data
       inventory = Inventory.select('inventories.model_id, inventories.store_id, inventories.stock, stores.name AS storename, models.name AS modelname')
                   .joins(:model)
-                  .joins(:store)
-                  .latest_stock
+                  .joins(:store).latest_stock
 
         
       total = 0
