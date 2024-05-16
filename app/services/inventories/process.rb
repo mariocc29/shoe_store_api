@@ -37,6 +37,8 @@ module Inventories
 
       percentage_change = if last_year_inventory.zero? && current_inventory.positive?
                             100.0
+                          elsif last_year_inventory.zero? && current_inventory.zero?
+                            0.0
                           else
                             (change_in_count.to_f / last_year_inventory.abs) * 100
                           end

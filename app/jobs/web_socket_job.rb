@@ -7,6 +7,7 @@ class WebSocketJob < ApplicationJob
   def perform(message)
     inventory = persists(message)
     build(inventory) do | data |
+      Inventories::Handler.transmit
       ActionCable.server.broadcast('NotificationChannel', { type: NotificationCategory::INVENTORY, data: })
     end
   rescue StandardError => e
