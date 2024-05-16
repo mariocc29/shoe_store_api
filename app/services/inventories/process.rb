@@ -21,7 +21,9 @@ module Inventories
                   .joins(:store)
                   .latest_stock
 
-      total = inventory.sum(:stock)
+        
+      total = 0
+      inventory.each {|item| total += item[:stock]}
       
       { inventory:, total: }
     end

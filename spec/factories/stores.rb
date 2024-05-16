@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :store do
-    name { Faker::Commerce.vendor }
+    name { Faker::Alphanumeric.alpha(number: 10) }
   end
 end
