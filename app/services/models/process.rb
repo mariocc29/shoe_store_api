@@ -20,8 +20,8 @@ module Models
                             .having('ROUND(EXTRACT(YEAR FROM created_at)) = ? OR ROUND(EXTRACT(YEAR FROM created_at)) = ?', current_year, previous_year)
                             .order('year ASC')
 
-      current_year_count = stores_per_year.detect { |data| data.year == current_year }&.total_items || 0
-      previous_year_count = stores_per_year.detect { |data| data.year == previous_year }&.total_items || 0
+      current_year_count = model_per_year.detect { |data| data.year == current_year }&.total_items || 0
+      previous_year_count = model_per_year.detect { |data| data.year == previous_year }&.total_items || 0
 
       change_in_count = current_year_count - previous_year_count
 
