@@ -16,7 +16,7 @@ module Inventories
     private
 
     def get_current_inventory_data
-      inventory = Inventory.select('inventories.model_id, inventories.store_id, inventories.stock, stores.name AS store_name, models.name')
+      inventory = Inventory.select('inventories.model_id, inventories.store_id, inventories.stock, stores.name AS store_name, models.name AS brand_name')
                   .joins(:model)
                   .joins(:store)
                   .latest_stock
